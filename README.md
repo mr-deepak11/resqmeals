@@ -210,31 +210,31 @@ Verification & Logging
 
 ## 🐛 Troubleshooting
 
-### Database Connection Error
-
-Check:
-
-```text
-MySQL service is running
-Password is correct
-Database resqmeals exists
-```
-
-### Port Already In Use
-
-Change:
-
-```javascript
-PORT = 5001
-```
-
-to another available port.
-
-### API Returning 500
+### MySQL Connection Error
 
 Verify:
 
+* MySQL Server is installed and running
+* Database `resqmeals` exists
+* MySQL username and password are correct in `server.js`
+
+Example:
+
+```javascript
+const dbConfig = {
+    host: 'localhost',
+    user: 'root',
+    password: 'YOUR_PASSWORD',
+    database: 'resqmeals'
+};
+```
+
+### Database Tables Not Found
+
+Run:
+
 ```sql
+USE resqmeals;
 SHOW TABLES;
 ```
 
@@ -249,5 +249,52 @@ alerts
 blockchain_log
 ```
 
----
+If tables are missing, import:
 
+```cmd
+mysql -u root -p resqmeals < db.sql
+```
+
+### API Returning 500 Internal Server Error
+
+Check:
+
+* MySQL service is running
+* Database connection credentials are correct
+* Tables have been imported successfully
+
+Test API:
+
+```text
+http://localhost:5001/api/state
+```
+
+### Port Already In Use
+
+Change:
+
+```javascript
+const PORT = process.env.PORT || 5001;
+```
+
+to another port:
+
+```javascript
+const PORT = process.env.PORT || 5002;
+```
+
+### Website Loads But Data Does Not Save
+
+Verify:
+
+* MySQL connection is successful
+* `donations` table exists
+* Browser console shows no API errors
+
+### Node Modules Missing
+
+Install dependencies:
+
+```bash
+npm install
+```
