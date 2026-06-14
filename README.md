@@ -210,46 +210,7 @@ Verification & Logging
 
 ---
 
-## 🐛 Troubleshooting
 
-### Database Connection Error
-
-Check:
-
-```text
-MySQL service is running
-Password is correct
-Database resqmeals exists
-```
-
-### Port Already In Use
-
-Change:
-
-```javascript
-PORT = 5001
-```
-
-to another available port.
-
-### API Returning 500
-
-Verify:
-
-```sql
-SHOW TABLES;
-```
-
-Required tables:
-
-```text
-users
-donations
-ngo_needs
-notifications
-alerts
-blockchain_log
-```
 ## 🐛 Troubleshooting
 
 ### MySQL Connection Error
