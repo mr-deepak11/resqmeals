@@ -251,10 +251,3 @@ blockchain_log
 
 ---
 
-## 👨‍💻 Developed By
-
-Deepak Kumar
-
-B.E Computer Science & Engineering
-
-ResQMeals – Smart Food Donation & Distribution System
